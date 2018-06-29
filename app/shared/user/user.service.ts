@@ -12,6 +12,22 @@ import { Config } from "../config";
 export class UserService {
   constructor(private http: Http) {}
 
+  login(user: User) {
+    return this.http.post(
+      Config.apiUrl + "user/" + Config.appKey + "/login",
+      JSON.stringify({
+        username: user.email,
+        password: user.password
+      }),
+      { headers: this.getCommonHeaders() }
+    )
+    .map(response => response.json())
+    .do(data => {
+      Config.token = data._kmd.authtoken
+    })
+    .catch(this.handleErrors);
+  }
+  
   register(user: User) {
     return this.http.post(
       Config.apiUrl + "user/" + Config.appKey,
