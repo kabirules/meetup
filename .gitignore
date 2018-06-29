@@ -1,3 +1,4 @@
 node_modules/
 platforms/
 node_modules/
+app/*.js
