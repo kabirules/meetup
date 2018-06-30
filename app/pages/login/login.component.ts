@@ -3,11 +3,12 @@ import { Router } from "@angular/router";
 
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
+import { MeetUpService } from "~/shared/meetup/meetup.service";
 
 
 @Component({
   selector: "my-app",
-  providers: [UserService],
+  providers: [UserService, MeetUpService],
   templateUrl: "./pages/login/login.html",
   styleUrls: ["./pages/login/login-common.css", "./pages/login/login.css"]
 })
@@ -16,7 +17,8 @@ export class LoginComponent {
   isLoggingIn = true;
 
   constructor(private router: Router, 
-              private userService: UserService) {
+              private userService: UserService,
+              private meetUpService: MeetUpService) {
     this.user = new User();
     this.user.email = "my.test.account@nativescript.org";
     this.user.password = "password";
@@ -52,4 +54,15 @@ export class LoginComponent {
   toggleDisplay() {
     this.isLoggingIn = !this.isLoggingIn;
   }
+
+  callCities() {
+    this.meetUpService.getCities()
+      .subscribe(
+        (data) => {
+          console.log(data.json);
+          alert("getCitites works fine");
+        },
+        () => alert("getCitites didn't work")
+      );
+    }
 }
