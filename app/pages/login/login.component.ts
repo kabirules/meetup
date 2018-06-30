@@ -57,12 +57,21 @@ export class LoginComponent {
 
   callCities() {
     this.meetUpService.getCities()
-      .subscribe(
-        (data) => {
-          console.log(data.json);
-          alert("getCitites works fine");
-        },
-        () => alert("getCitites didn't work")
-      );
-    }
+    .subscribe(
+      (data) => {
+        console.log(data[1]);
+      },
+      () => alert("getCitites didn't work")
+    );
+  }
+
+  callTopics() {
+    this.meetUpService.getTopics('London')
+    .subscribe(
+      (data) => {
+        //console.log(data);
+      },
+      () => alert("getCitites didn't work")
+    );    
+  }
 }
