@@ -3,4 +3,8 @@ export class Config {
   static appKey = "kid_HyHoT_REf";
   static authHeader = "Basic a2lkX0h5SG9UX1JFZjo1MTkxMDJlZWFhMzQ0MzMyODFjN2MyODM3MGQ5OTIzMQ";
   static token = "";
+  //meetup
+  static sig_id = 0; // 
+  static sig = 0; // 
+  static meetUpHost = 'https://api.meetup.com';
 }
