@@ -5,6 +5,7 @@ import { Config } from "../config";
 import { City } from "~/shared/meetup/city";
 import { Meta } from "~/shared/meetup/meta";
 import { Topic } from "~/shared/meetup/topic";
+import { Group } from "~/shared/meetup/group";
 
 
 
@@ -57,9 +58,19 @@ export class MeetUpService {
     .catch(this.handleErrors);                
   }
 
+  // TODO send lat & long
   getGroups() {
     const url = Config.meetUpHost +
-                this.METHOD_TOPICS; // pending
+                this.METHOD_TOPICS +
+                '?photo-host=public&page=20';
+    return this.http.get(url)
+      .map(response => { 
+        const results = <Array<Group>>response.json().results;
+        return results;
+      })
+      .do(data => {
+      })
+      .catch(this.handleErrors);
   }
 
   handleErrors(error: Response) {
