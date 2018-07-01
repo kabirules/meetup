@@ -71,7 +71,17 @@ export class LoginComponent {
       (data) => {
         //console.log(data);
       },
-      () => alert("getCitites didn't work")
+      () => alert("callTopics didn't work")
+    );    
+  }
+
+  callGroups() {
+    this.meetUpService.getGroups()
+    .subscribe(
+      (data) => {
+        console.log(data);
+      },
+      () => alert("callGroups didn't work")
     );    
   }
 }

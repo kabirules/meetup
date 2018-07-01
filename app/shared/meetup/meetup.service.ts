@@ -50,7 +50,7 @@ export class MeetUpService {
       const topics = <Array<Topic>>response.json();
       topics.forEach(element => {
         console.log(element);
-      });        
+      });
       return topics;
     })
     .do(data => {
@@ -65,8 +65,11 @@ export class MeetUpService {
                 '?photo-host=public&page=20';
     return this.http.get(url)
       .map(response => { 
-        const results = <Array<Group>>response.json().results;
-        return results;
+        const groups = <Array<Group>>response.json().results;
+        groups.forEach(element => {
+          console.log(element.urlname);
+        });
+        return groups;
       })
       .do(data => {
       })
