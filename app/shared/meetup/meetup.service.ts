@@ -59,15 +59,18 @@ export class MeetUpService {
   }
 
   // TODO send lat & long
-  getGroups() {
+  getGroups(lat: number, lon: number) {
     const url = Config.meetUpHost +
-                this.METHOD_TOPICS +
-                '?photo-host=public&page=20';
+                this.METHOD_GROUPS +
+                '?photo-host=public&page=20&sign=true'+
+                '&lat=' + lat + 
+                '&lon=' + lon +
+                '&key=' + Config.API_KEY;
     return this.http.get(url)
       .map(response => { 
-        const groups = <Array<Group>>response.json().results;
+        const groups = <Array<Group>>response.json();
         groups.forEach(element => {
-          console.log(element.urlname);
+          console.log(element.urlname + ' - ' + element.join_mode);
         });
         return groups;
       })

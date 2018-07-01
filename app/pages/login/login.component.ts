@@ -76,7 +76,9 @@ export class LoginComponent {
   }
 
   callGroups() {
-    this.meetUpService.getGroups()
+    const lat = 41.9097; // TODO get it from GPS
+    const lon = 12.2558; // TODO get it from GPS
+    this.meetUpService.getGroups(lat, lon)
     .subscribe(
       (data) => {
         console.log(data);
