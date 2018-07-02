@@ -62,18 +62,23 @@ export class MeetUpService {
   // TODO send lat & long
   // Returns only groups with join_mode 'open'
   getGroups(lat: number, lon: number) {
+    // lat = 41.9097; // TODO get it from GPS
+    // lon = 12.2558;
+    const latUrl = (lat !== null && lat !== undefined) ? '&lat=' + lat : ''
+    const lonUrl = (lon !== null && lon !== undefined) ? '&lon=' + lon : ''
     const url = Config.meetUpHost +
                 this.METHOD_GROUPS +
-                '?photo-host=public&page=20&sign=true'+
-                '&lat=' + lat + 
-                '&lon=' + lon +
-                '&key=' + Config.API_KEY;
+                '?photo-host=public&page=20&sign=true' +
+                '&key=' + Config.API_KEY +
+                latUrl + 
+                lonUrl;
     return this.http.get(url)
       .map(response => { 
         const result = new Array<Group>();
         const groups = <Array<Group>>response.json();
         groups.forEach(element => {
           if (element.join_mode === 'open') {
+            console.log(element.name);
             result.push(element);
           }
         });
@@ -87,16 +92,15 @@ export class MeetUpService {
   getProfiles(urlname: string) {
     const url = Config.meetUpHost + '/' + 
                 urlname +
-                '/members?&photo-host=public&page=20'; 
-                'sign=true&' +
+                '/members?&photo-host=public&page=20' +
+                'sign=true' +
                 '&key=' + Config.API_KEY;
-    console.log(url);
     return this.http.get(url)
-    .map(response => { 
+    .map(response => {
       const members = <Array<Member>>response.json();
       members.forEach(element => {
-        console.log(element.name);
-        console.log(element.photo.highres_link);
+        // console.log(element.name);
+        // console.log(element.photo.highres_link);
       });
       return members;
     })

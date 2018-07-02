@@ -1,5 +1,7 @@
 <StackLayout>
+  <!--
     <Image src="res://logo_login" stretch="none" horizontalAlignment="center"></Image>
+  -->
   <!--
     <TextField hint="Email Address" keyboardType="email" [(ngModel)]="user.email"
       autocorrect="false" autocapitalizationType="none"></TextField>
@@ -9,8 +11,27 @@
     <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="submit-button" (tap)="submit()"></Button>
     <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()"></Button>
   -->
+  <!--
     <Button [text]="'Cities'" (tap)="callCities()"></Button>
     <Button [text]="'Topics'" (tap)="callTopics()"></Button>
     <Button [text]="'Groups'" (tap)="callGroups()"></Button>
+  -->
     <Button [text]="'Profiles'" (tap)="callProfiles()"></Button>
+    <!--
+    <StackLayout *ngFor="let member of this.members">
+      <Label [text]="member.name"></Label> 
+    </StackLayout>
+    -->
+    <ListView [items]="members" class="small-spacing">
+      <ng-template let-item="item">
+        <Image [src]="item.photo.highres_link"></Image>
+      </ng-template>
+    </ListView>          
+    <!--
+    <ListView [items]="members" class="small-spacing">
+      <ng-template let-item="item">
+        <Label [text]="item.name" class="medium-spacing"></Label>
+      </ng-template>
+    </ListView>    
+    -->
 </StackLayout>

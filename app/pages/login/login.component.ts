@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { MeetUpService } from "~/shared/meetup/meetup.service";
+import { Member } from "~/shared/meetup/member";
 
 
 @Component({
@@ -12,9 +13,11 @@ import { MeetUpService } from "~/shared/meetup/meetup.service";
   templateUrl: "./pages/login/login.html",
   styleUrls: ["./pages/login/login-common.css", "./pages/login/login.css"]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   user: User;
   isLoggingIn = true;
+
+  members = Array<Member>();
 
   constructor(private router: Router, 
               private userService: UserService,
@@ -22,6 +25,10 @@ export class LoginComponent {
     this.user = new User();
     this.user.email = "my.test.account@nativescript.org";
     this.user.password = "password";
+  }
+
+  ngOnInit() {
+    this.callProfiles();
   }
   
   submit() {
@@ -76,8 +83,10 @@ export class LoginComponent {
   }
 
   callGroups() {
-    const lat = 41.9097; // TODO get it from GPS
-    const lon = 12.2558; // TODO get it from GPS
+    //const lat = 41.9097; // TODO get it from GPS
+    //const lon = 12.2558; // TODO get it from GPS
+    let lat: null;
+    let lon: null;
     this.meetUpService.getGroups(lat, lon)
     .subscribe(
       (data) => {
@@ -92,13 +101,10 @@ export class LoginComponent {
     this.meetUpService.getProfiles(urlname)
     .subscribe(
       (data) => {
-        // console.log(data);
+        this.members = data;
+        console.log(this.members);
       },
-      () => alert("callGroups didn't work")
+      () => alert("callProfiles didn't work")
     );    
   }  
-
-  callMembers() {
-
-  }
 }
