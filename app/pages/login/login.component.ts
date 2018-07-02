@@ -81,9 +81,24 @@ export class LoginComponent {
     this.meetUpService.getGroups(lat, lon)
     .subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
       },
       () => alert("callGroups didn't work")
     );    
+  }
+
+  callProfiles() {
+    const urlname = 'Couchsurfing-Roma-Weekly';
+    this.meetUpService.getProfiles(urlname)
+    .subscribe(
+      (data) => {
+        // console.log(data);
+      },
+      () => alert("callGroups didn't work")
+    );    
+  }  
+
+  callMembers() {
+
   }
 }

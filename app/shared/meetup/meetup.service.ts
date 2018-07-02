@@ -6,6 +6,7 @@ import { City } from "~/shared/meetup/city";
 import { Meta } from "~/shared/meetup/meta";
 import { Topic } from "~/shared/meetup/topic";
 import { Group } from "~/shared/meetup/group";
+import { Member } from "~/shared/meetup/member";
 
 
 
@@ -59,6 +60,7 @@ export class MeetUpService {
   }
 
   // TODO send lat & long
+  // Returns only groups with join_mode 'open'
   getGroups(lat: number, lon: number) {
     const url = Config.meetUpHost +
                 this.METHOD_GROUPS +
@@ -68,15 +70,39 @@ export class MeetUpService {
                 '&key=' + Config.API_KEY;
     return this.http.get(url)
       .map(response => { 
+        const result = new Array<Group>();
         const groups = <Array<Group>>response.json();
         groups.forEach(element => {
-          console.log(element.urlname + ' - ' + element.join_mode);
+          if (element.join_mode === 'open') {
+            result.push(element);
+          }
         });
-        return groups;
+        return result;
       })
       .do(data => {
       })
       .catch(this.handleErrors);
+  }
+
+  getProfiles(urlname: string) {
+    const url = Config.meetUpHost + '/' + 
+                urlname +
+                '/members?&photo-host=public&page=20'; 
+                'sign=true&' +
+                '&key=' + Config.API_KEY;
+    console.log(url);
+    return this.http.get(url)
+    .map(response => { 
+      const members = <Array<Member>>response.json();
+      members.forEach(element => {
+        console.log(element.name);
+        console.log(element.photo.highres_link);
+      });
+      return members;
+    })
+    .do(data => {
+    })
+    .catch(this.handleErrors);                
   }
 
   handleErrors(error: Response) {
