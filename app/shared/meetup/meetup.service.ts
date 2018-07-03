@@ -89,6 +89,7 @@ export class MeetUpService {
       .catch(this.handleErrors);
   }
 
+  // Make sure the member has photo
   getProfiles(urlname: string) {
     const url = Config.meetUpHost + '/' + 
                 urlname +
@@ -98,11 +99,13 @@ export class MeetUpService {
     return this.http.get(url)
     .map(response => {
       const members = <Array<Member>>response.json();
+      const result = new Array<Member>();
       members.forEach(element => {
-        // console.log(element.name);
-        // console.log(element.photo.highres_link);
+        if (element.photo) {
+          result.push(element);
+        }
       });
-      return members;
+      return result;
     })
     .do(data => {
     })
