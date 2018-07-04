@@ -68,7 +68,7 @@ export class MeetUpService {
         const groups = <Array<Group>>response.json();
         groups.forEach(element => {
           if (element.join_mode === 'open') {
-            console.log(element.name);
+            //console.log(element.name);
             result.push(element);
           }
         });

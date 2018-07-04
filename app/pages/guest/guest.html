@@ -1,0 +1,7 @@
+<StackLayout>
+    <ListView [items]="members" class="small-spacing"  height="100%">
+        <ng-template let-item="item">
+            <Image [src]="item.photo.photo_link"></Image>
+        </ng-template>
+    </ListView>
+</StackLayout>

@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
     this.meetUpService.getCities()
     .subscribe(
       (data) => {
-        console.log(data[1]);
+        //console.log(data[1]);
       },
       () => alert("getCitites didn't work")
     );
@@ -102,7 +102,6 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (data) => {
         this.members = data;
-        console.log(this.members);
       },
       () => alert("callProfiles didn't work")
     );    

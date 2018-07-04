@@ -6,6 +6,8 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { AppComponent } from "./app.component";
 import { ListComponent } from "./pages/list/list.component";
+import { HomeComponent } from "./pages/home/home.component";
+import { GuestComponent } from "./pages/guest/guest.component";
 import { routes, navigatableComponents } from "./app.routing";
 
 // test -> remove
@@ -18,6 +20,8 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptRouterModule.forRoot(routes)
   ],
   declarations: [
+    GuestComponent,
+    HomeComponent,
     ListComponent,
     AppComponent,
     ...navigatableComponents
