@@ -21,17 +21,10 @@ export class MeetUpService {
   getCities() {
     const url = Config.meetUpHost +
                 this.METHOD_CITIES + 
-                '?offset=0&format=json&photo-host=public&page=20&radius=50&order=size&desc=false&lat=51.52&lon=-0.24'
-                // +
-                // '&sig_id=' + Config.sig_id +
-                // '&sig=' + Config.sig;
+                '?offset=0&format=json&photo-host=public&page=20&radius=50&order=size&desc=false&lat=51.52&lon=-0.24';
     return this.http.get(url)
       .map(response => { 
-        // const meta = <Meta>response.json().meta;
         const results = <Array<City>>response.json().results;
-        // results.forEach(element => {
-        //  console.log(element.city);  
-        // });        
         return results;
       })
       .do(data => {
@@ -42,15 +35,12 @@ export class MeetUpService {
   getTopics(query: string) {
     const url = Config.meetUpHost +
                 this.METHOD_TOPICS + 
-                '?photo-host=public&page=20&query=' + query 
-                // + 
-                // '&sig_id=' + Config.sig_id +
-                // '&sig=' + Config.sig1;
+                '?photo-host=public&page=20&query=' + query; 
     return this.http.get(url)
     .map(response => { 
       const topics = <Array<Topic>>response.json();
       topics.forEach(element => {
-        console.log(element);
+        // console.log(element);
       });
       return topics;
     })
