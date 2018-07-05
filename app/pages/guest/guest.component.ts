@@ -14,6 +14,10 @@ export class GuestComponent implements OnInit {
   members: Array<Member>;
   groups: Array<Group>;
 
+  index: number;
+  photo_url: string;
+  name: string;
+
   constructor(private meetUpService: MeetUpService) {
   }
 
@@ -42,6 +46,7 @@ export class GuestComponent implements OnInit {
     .subscribe(
       (data) => {
         this.members = data;
+        this.testMethod();
         //console.log(this.members);
       },
       () => alert("callProfiles didn't work")
@@ -52,5 +57,13 @@ export class GuestComponent implements OnInit {
     const totalGroups = this.groups.length;
     const index = Math.floor(Math.random() * totalGroups);
     return this.groups[index].urlname;
+  }
+
+  testMethod() {
+    const totalMembers = this.members.length;
+    this.index = Math.floor(Math.random() * totalMembers);
+    this.photo_url = this.members[this.index].photo.photo_link;
+    this.name = this.members[this.index].name + ', ' +  this.members[this.index].localized_country_name;
+    console.log(this.name);
   }
 }
