@@ -1,18 +1,21 @@
+<!--
 <StackLayout orientation="vertical" height="100%" width="100%">
     <Image [src]="photo_url" stretch="none"></Image>
     <Label [text]="name"></Label> 
     <Button [text]="'BACK'" (tap)="testMethod()"></Button>
     <Button [text]="'NEXT'" (tap)="testMethod()"></Button>
 </StackLayout>
-
-
-    <!--
-    <ListView [items]="members" class="small-spacing"  height="10%">
-        <ng-template let-item="item">
-            <Image [src]="item.photo.photo_link"></Image>
-        </ng-template>
-    </ListView>
-    <GridLayout columns="*,*" rows="*,*">
-        <Image rowSpan="2"  colSpan="2" [src]="members[0].photo.photo_link" stretch="none"></Image>
-    </GridLayout>
 -->
+<!--
+<ListView [items]="members" class="small-spacing"  height="10%">
+    <ng-template let-item="item">
+        <Image [src]="item.photo.photo_link"></Image>
+    </ng-template>
+</ListView>
+<GridLayout columns="*,*" rows="*,*">
+    <Image rowSpan="2"  colSpan="2" [src]="members[0].photo.photo_link" stretch="none"></Image>
+</GridLayout>
+-->
+<StackLayout>
+    <Image [src]="photo_url" stretch="none"></Image>
+</StackLayout>
