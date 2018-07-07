@@ -12,10 +12,10 @@
         <Image [src]="item.photo.photo_link"></Image>
     </ng-template>
 </ListView>
-<GridLayout columns="*,*" rows="*,*">
-    <Image rowSpan="2"  colSpan="2" [src]="members[0].photo.photo_link" stretch="none"></Image>
-</GridLayout>
 -->
-<StackLayout>
-    <Image [src]="photo_url" stretch="none"></Image>
-</StackLayout>
+<GridLayout columns="*,*" rows="*,20,*" height="80%">
+    <Image row="0"  colSpan="2" [src]="photo_url" verticalAlignment="stretch" horizontalAlignement="stretch" height="85%"></Image>
+    <Label row="1"  colSpan="2" [text]="name" height="5%" horizontalAlignement="stretch"></Label> 
+    <Button row="2" col="0" [text]="'BACK'" (tap)="testMethod()" height="10%"></Button>
+    <Button row="2" col="1" [text]="'NEXT'" (tap)="testMethod()" height="10%"></Button>    
+</GridLayout>

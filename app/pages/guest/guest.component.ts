@@ -16,6 +16,7 @@ export class GuestComponent implements OnInit {
 
   index: number;
   photo_url: string;
+  bigPhoto_url: string;
   name: string;
 
   constructor(private meetUpService: MeetUpService) {
@@ -63,6 +64,7 @@ export class GuestComponent implements OnInit {
     const totalMembers = this.members.length;
     this.index = Math.floor(Math.random() * totalMembers);
     this.photo_url = this.members[this.index].photo.photo_link;
+    this.bigPhoto_url = this.members[this.index].photo.highres_link;
     this.name = this.members[this.index].name + ', ' +  this.members[this.index].localized_country_name;
     console.log(this.name);
   }

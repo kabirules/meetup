@@ -1,7 +1,10 @@
 Image {
-    margin: 2%;
+    margin: 5%;
 }
 StackLayout {
     width: 100%;
     text-align: center;
+}
+Label {
+    margin:5%;
 }
