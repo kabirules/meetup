@@ -1,16 +1,21 @@
+/*
 Image {
-    margin: 5%;
+    padding: 0%;
 }
 StackLayout {
     width: 100%;
     text-align: center;
-    border: solid, 1px, #000;
+    border: 5px solid red;
 }
 GridLayout {
     width: 100%;
     text-align: center;
-    border: solid, 1px, #000;
+    border: 5px solid red;
 }
 Label {
     margin:5%;
+}
+*/
+Label {
+    margin:3%;
 }
