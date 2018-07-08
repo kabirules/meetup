@@ -4,6 +4,12 @@ Image {
 StackLayout {
     width: 100%;
     text-align: center;
+    border: solid, 1px, #000;
+}
+GridLayout {
+    width: 100%;
+    text-align: center;
+    border: solid, 1px, #000;
 }
 Label {
     margin:5%;

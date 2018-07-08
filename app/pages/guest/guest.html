@@ -13,9 +13,11 @@
     </ng-template>
 </ListView>
 -->
-<GridLayout columns="*,*" rows="*,20,*" height="80%">
-    <Image row="0"  colSpan="2" [src]="photo_url" verticalAlignment="stretch" horizontalAlignement="stretch" height="85%"></Image>
-    <Label row="1"  colSpan="2" [text]="name" height="5%" horizontalAlignement="stretch"></Label> 
-    <Button row="2" col="0" [text]="'BACK'" (tap)="testMethod()" height="10%"></Button>
-    <Button row="2" col="1" [text]="'NEXT'" (tap)="testMethod()" height="10%"></Button>    
-</GridLayout>
+<StackLayout orientation="vertical" height="100%" width="100%">
+    <Image [src]="photo_url" verticalAlignment="bottom" horizontalAlignement="stretch" height="55%"></Image>
+    <Label [text]="name" height="5%" verticalAlignment="top" horizontalAlignement="stretch"></Label> 
+    <GridLayout columns="*,*" rows="*" height="40%">
+        <Button row="0" col="0" [text]="'BACK'" (tap)="testMethod()" height="50%" verticalAlignment="bottom"></Button>
+        <Button row="0" col="1" [text]="'NEXT'" (tap)="testMethod()" height="50%" verticalAlignment="bottom"></Button>    
+    </GridLayout>
+</StackLayout>
